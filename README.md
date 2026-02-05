@@ -1,1 +1,2 @@
-vercel deployment link:kitab-ghar-ckopp77jy-busha-saleems-projects.vercel.app
+kitab-ghar-ckopp77jy-busha-saleems-projects.vercel.app
+
