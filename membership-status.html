@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Status - Library Management System</title>
+    <link rel="stylesheet" href="css/user-styles.css">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="header-content">
+            <h1>DASHBOARD</h1>
+            <div class="header-icons">
+                <span class="icon">🔔</span>
+                <span class="icon user-icon">👤</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">کتاب گھر</div>
+            <nav class="sidebar-nav">
+             
+                <a href="#" class="nav-item active" onclick="loadUserPage('membership-status')">
+                    <span class="nav-icon">💳</span> Membership Status
+                </a>
+              
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <div class="breadcrumb">
+                    <a href="index.html">HOME</a>
+                    <span>|</span>
+                    <a href="#" onclick="history.back()">BACK</a>
+                </div>
+            </div>
+
+            <div class="welcome-section">
+                <h2>Welcome, <span id="userName">User</span></h2>
+            </div>
+
+            <div class="membership-content">
+                <div class="membership-info">
+                    <h3>MEMBERSHIP STATUS</h3>
+                    <p id="membershipStatusText">Not Paid</p>
+                    <p>Security Fee</p>
+                    <p class="amount">Rs. 1000</p>
+                    <button class="status-btn" id="membershipStatusBtn">Not Active</button>
+                </div>
+
+                <div class="payment-methods">
+                    <h3>Payment methods</h3>
+                    <div class="payment-options">
+                        <div class="payment-option" onclick="selectPaymentMethod('card')">
+                            <input type="radio" name="payment" id="card" value="card">
+                            <label for="card">
+                                <strong>Credit/Debit Card</strong>
+                                <p>Pay with your card</p>
+                            </label>
+                        </div>
+                        <div class="payment-option" onclick="selectPaymentMethod('easypaisa')">
+                            <input type="radio" name="payment" id="easypaisa" value="easypaisa">
+                            <label for="easypaisa">
+                                <strong>Easypaisa Direct</strong>
+                                <p>Pay via Easypaisa</p>
+                            </label>
+                        </div>
+                        <div class="payment-option" onclick="selectPaymentMethod('jazzcash')">
+                            <input type="radio" name="payment" id="jazzcash" value="jazzcash">
+                            <label for="jazzcash">
+                                <strong>JazzCash</strong>
+                                <p>Pay via JazzCash</p>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="payNowBtn" onclick="processPayment()">Pay Now</button>
+                </div>
+            </div>
+        </main>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/user-membership.js"></script>
+</body>
+</html>
+

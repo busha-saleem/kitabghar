@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Library Management System</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">کتاب گھر</a>
+            <div class="nav-right">
+                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
+                <button class="nav-btn admin-btn">
+                    <span class="icon">👤</span> Admin
+                </button>
+                <button class="nav-btn logout-btn" onclick="handleLogout()">
+                    <span class="icon">🚪</span> LOGOUT
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+       <aside class="sidebar">
+    <button class="sidebar-item" data-page="dashboard">Dashboard</button>
+    <button class="sidebar-item" data-page="add-books">Add Books</button>
+    <button class="sidebar-item" data-page="borrow">Borrow</button>
+    <button class="sidebar-item" data-page="return">Return</button>
+    <button class="sidebar-item" data-page="members">Members</button>
+    <button class="sidebar-item" data-page="damaged-lost">Damaged/Lost</button>
+</aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Admin Dashboard</h1>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="card-icon blue">📚</div>
+                    <div class="card-content">
+                        <h3>Total Books</h3>
+                        <p class="card-value" id="totalBooks">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon green">📈</div>
+                    <div class="card-content">
+                        <h3>Available Books</h3>
+                        <p class="card-value" id="availableBooks">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon orange">📊</div>
+                    <div class="card-content">
+                        <h3>Borrowed Books</h3>
+                        <p class="card-value" id="borrowedBooks">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon purple">🔔</div>
+                    <div class="card-content">
+                        <h3>PENDING REQUESTS</h3>
+                        <p class="card-value" id="pendingRequests">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon red">⚠️</div>
+                    <div class="card-content">
+                        <h3>Overdue Books</h3>
+                        <p class="card-value" id="overdueBooks">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Tiles -->
+            <div class="action-tiles">
+                <div class="action-tile" data-page="add-books">
+                    <div class="tile-icon">+</div>
+                    <div class="tile-content">
+                        <h3>ADD BOOKS</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+                <div class="action-tile" data-page="borrow">
+                    <div class="tile-icon">📖</div>
+                    <div class="tile-content">
+                        <h3>BORROW REQ</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+                <div class="action-tile" data-page="return">
+                    <div class="tile-icon">↩️</div>
+                    <div class="tile-content">
+                        <h3>RETURN REQ</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+                <div class="action-tile" data-page="members">
+                    <div class="tile-icon">👥</div>
+                    <div class="tile-content">
+                        <h3>MEMBERS</h3>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Borrows Section -->
+            <div class="recent-borrows">
+                <h2 class="section-title">MOST RECENT BORROWS</h2>
+                <div class="borrows-list" id="recentBorrowsList">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Overdue Alerts -->
+            <div class="overdue-alert" id="overdueAlert" style="display: none;">
+                <strong>OVERDUE ALERTS</strong>
+            </div>
+        </main>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/admin-common.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
+

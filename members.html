@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">کتاب گھر</a>
+            <div class="nav-right">
+                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
+                <button class="nav-btn admin-btn">
+                    <span class="icon">👤</span> Admin
+                </button>
+                <button class="nav-btn logout-btn" onclick="handleLogout()">
+                    <span class="icon">🚪</span> LOGOUT
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <button class="sidebar-item" onclick="loadPage('dashboard')">Dashboard</button>
+            <button class="sidebar-item" onclick="loadPage('add-books')">Add Books</button>
+            <button class="sidebar-item" onclick="loadPage('borrow')">Borrow</button>
+            <button class="sidebar-item" onclick="loadPage('return')">Return</button>
+            <button class="sidebar-item active" onclick="loadPage('members')">Members</button>
+            <button class="sidebar-item" onclick="loadPage('damaged-lost')">Damaged/Lost</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Members</h1>
+            </div>
+
+            <div class="page-section">
+                <div class="filters-section">
+                    <h3>Filters</h3>
+                    <div class="filter-group">
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter" onchange="filterMembers()">
+                            <option value="all">All</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <h3>Members (<span id="membersCount">0</span>)</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Membership Date</th>
+                                    <th>Status</th>
+                                    <th>Borrowed Books</th>
+                                    <th>Total Borrowed</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="membersTableBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Member Details Modal -->
+    <div id="memberDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMemberDetailsModal()">&times;</span>
+            <h2>Member Details</h2>
+            <div id="memberDetailsContent">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin-common.js"></script>
+<script src="js/admin-members.js"></script>
+
+</body>
+</html>
+

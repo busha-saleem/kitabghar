@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Library Management System</title>
+    <link rel="stylesheet" href="css/user-styles.css">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="header-content">
+            <h1>DASHBOARD</h1>
+            <div class="header-icons">
+                <span class="icon">🔔</span>
+                <span class="icon user-icon">👤</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">کتاب گھر</div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="loadUserPage('dashboard')">
+                    <span class="nav-icon">📊</span> Dashboard
+                </a>
+                      </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <div class="breadcrumb">
+                    <a href="index.html">HOME</a>
+                    <span>|</span>
+                    <a href="#" onclick="history.back()">BACK</a>
+                </div>
+            </div>
+
+            <div class="welcome-section">
+                <h2>Welcome, <span id="userName">User</span></h2>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Borrowed Book Section -->
+                <div class="dashboard-card">
+                    <h3>BORROWED BOOK</h3>
+                    <div id="borrowedBookContent">
+                        <p class="empty-message">No books currently borrowed</p>
+                    </div>
+                </div>
+
+                <!-- Membership Status Section -->
+                <div class="dashboard-card">
+                    <h3>MEMBERSHIP STATUS</h3>
+                    <div id="membershipStatusContent">
+                        <p id="membershipStatus">Not Paid</p>
+                        <p>Security Fee</p>
+                        <p class="amount">Rs. 1000</p>
+                        <button class="status-btn" id="membershipBtn" onclick="loadUserPage('membership-status')">
+                            Not Active
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Borrow History Section -->
+                <div class="dashboard-card">
+                    <h3>BORROW HISTORY</h3>
+                    <div class="table-container">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Book Title</th>
+                                    <th>Borrow Date</th>
+                                    <th>Return Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="borrowHistoryBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Returned History Section -->
+                <div class="dashboard-card">
+                    <h3>Returned History</h3>
+                    <div class="table-container">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Book Title</th>
+                                    <th>Borrow Date</th>
+                                    <th>Return Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="returnedHistoryBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- My Borrowed Books List -->
+                <div class="dashboard-card">
+                    <h3>MY BORROWED BOOKS</h3>
+                    <div id="my-borrowed-books-list">
+                        <p class="empty-message">No active borrowed books</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+
+    <script src="js/api.js"></script>
+    <script src="js/user-common.js"></script>
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<!-- Book Detail Page Template -->
+<div class="book-detail-page">
+    <div class="container">
+        <button class="btn-back" id="backToBrowse">&larr; Back to Browse</button>
+        
+        <div class="book-detail-container">
+            <div class="book-detail-image">
+                <img id="detailBookCover" src="" alt="Book Cover">
+            </div>
+            
+            <div class="book-detail-info">
+                <h1 id="detailBookTitle">Book Title</h1>
+                <h3 id="detailBookAuthor">Author Name</h3>
+                
+                <div class="book-meta">
+                    <span class="meta-item"><strong>Genre:</strong> <span id="detailBookGenre"></span></span>
+                    <span class="meta-item"><strong>Published:</strong> <span id="detailBookYear"></span></span>
+                    <span class="meta-item"><strong>Pages:</strong> <span id="detailBookPages"></span></span>
+                    <span class="meta-item availability-badge" id="detailAvailability">Available</span>
+                </div>
+                
+                <div class="book-description">
+                    <h4>Description</h4>
+                    <p id="detailBookDescription"></p>
+                </div>
+                
+                <button class="btn-borrow" id="borrowNowBtn">Borrow Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Personal Details Modal -->
+<div id="personalDetailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closePersonalDetails">&times;</span>
+        <h2>Personal Details</h2>
+        <p>Please provide your details for book delivery</p>
+        
+        <form id="personalDetailsForm">
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number *</label>
+                <input type="tel" id="phoneNumber" placeholder="+92 300 1234567" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Complete Address *</label>
+                <textarea id="address" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="postalCode">Postal Code</label>
+                <input type="text" id="postalCode">
+            </div>
+            
+            <button type="submit" class="btn-primary">Confirm & Borrow</button>
+        </form>
+    </div>
+</div>

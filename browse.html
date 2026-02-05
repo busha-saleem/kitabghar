@@ -1,0 +1,63 @@
+<!-- Browse Page Template -->
+<div class="browse-page">
+    <div class="browse-container">
+        <!-- Left Sidebar Filters -->
+        <aside class="filter-sidebar">
+            <h3>Filters</h3>
+            
+            <!-- Search Box -->
+            <div class="filter-group">
+                <label>Search</label>
+                <input type="text" id="searchInput" placeholder="Search books..." class="search-input">
+            </div>
+            
+            <!-- Genre Filter -->
+            <div class="filter-group">
+                <label>Genre</label>
+                <select id="genreFilter" class="filter-select">
+                    <option value="">All Genres</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Classic">Classic</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Non-Fiction">Non-Fiction</option>
+                    <option value="Biography">Biography</option>
+                    <option value="History">History</option>
+                </select>
+            </div>
+            
+            <!-- Author Filter -->
+            <div class="filter-group">
+                <label>Author</label>
+                <input type="text" id="authorFilter" placeholder="Filter by author..." class="filter-input">
+            </div>
+            
+            <!-- Availability Filter -->
+            <div class="filter-group">
+                <label>Availability</label>
+                <select id="availabilityFilter" class="filter-select">
+                    <option value="">All Books</option>
+                    <option value="available">Available</option>
+                    <option value="borrowed">Currently Borrowed</option>
+                </select>
+            </div>
+            
+            <button id="clearFilters" class="btn-secondary">Clear Filters</button>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="browse-content">
+            <div class="browse-header">
+                <h2>Browse Books</h2>
+                <p id="resultsCount">Showing all books</p>
+            </div>
+            
+            <div class="books-grid" id="browseBooksList">
+                <!-- Books will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+</div>

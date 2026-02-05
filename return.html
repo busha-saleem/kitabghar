@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Management - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">کتاب گھر</a>
+            <div class="nav-right">
+                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
+                <button class="nav-btn admin-btn">
+                    <span class="icon">👤</span> Admin
+                </button>
+                <button class="nav-btn logout-btn" onclick="handleLogout()">
+                    <span class="icon">🚪</span> LOGOUT
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <button class="sidebar-item" onclick="loadPage('dashboard')">Dashboard</button>
+            <button class="sidebar-item" onclick="loadPage('add-books')">Add Books</button>
+            <button class="sidebar-item" onclick="loadPage('borrow')">Borrow</button>
+            <button class="sidebar-item active" onclick="loadPage('return')">Return</button>
+            <button class="sidebar-item" onclick="loadPage('members')">Members</button>
+            <button class="sidebar-item" onclick="loadPage('damaged-lost')">Damaged/Lost</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Return</h1>
+            </div>
+
+            <div class="page-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Return Management</h2>
+                        <p>Manage returns</p>
+                    </div>
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <h3>Current requests</h3>
+                            <p class="stat-value" id="currentRequests">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Returned</h3>
+                            <p class="stat-value" id="returnedCount">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Damaged/losts</h3>
+                            <p class="stat-value" id="damagedLostCount">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <h3>Return Requests</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Book</th>
+                                    <th>Member</th>
+                                    <th>Borrow Date</th>
+                                    <th>DueDate</th>
+                                    <th>Status</th>
+                                    <th>Days Remaining</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="returnsTableBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary" onclick="loadPage('damaged-lost')">+ Damaged/lost</button>
+                </div>
+            </div>
+        </main>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+   <script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/admin-common.js"></script>
+<script src="js/admin-return.js"></script>
+
+</body>
+</html>
+

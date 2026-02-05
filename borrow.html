@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Management - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">کتاب گھر</a>
+            <div class="nav-right">
+                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
+                <button class="nav-btn admin-btn">
+                    <span class="icon">👤</span> Admin
+                </button>
+                <button class="nav-btn logout-btn" onclick="handleLogout()">
+                    <span class="icon">🚪</span> LOGOUT
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <button class="sidebar-item" onclick="loadPage('dashboard')">Dashboard</button>
+            <button class="sidebar-item" onclick="loadPage('add-books')">Add Books</button>
+            <button class="sidebar-item active" onclick="loadPage('borrow')">Borrow</button>
+            <button class="sidebar-item" onclick="loadPage('return')">Return</button>
+            <button class="sidebar-item" onclick="loadPage('members')">Members</button>
+            <button class="sidebar-item" onclick="loadPage('damaged-lost')">Damaged/Lost</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Borrow</h1>
+            </div>
+
+            <div class="page-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Borrowing Management</h2>
+                        <p>Manage book borrowing</p>
+                    </div>
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <h3>Current Borrowings</h3>
+                            <p class="stat-value" id="currentBorrowings">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Overdue Books</h3>
+                            <p class="stat-value" id="overdueBooks">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Available Books</h3>
+                            <p class="stat-value" id="availableBooks">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <h3>Borrowing Requests (<span id="borrowingsCount">0</span>)</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Book</th>
+                                    <th>Member</th>
+                                    <th>Borrow Date</th>
+                                    <th>DueDate</th>
+                                    <th>Status</th>
+                                    <th>Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="borrowingsTableBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="showNewBorrowingModal()">+ New Borrowings</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Borrowing Modal -->
+    <div id="newBorrowingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeNewBorrowingModal()">&times;</span>
+            <h2>New Borrowing</h2>
+            <form id="newBorrowingForm">
+                <div class="form-group">
+                    <label for="borrowMember">Member Email</label>
+                    <input type="email" id="borrowMember" required>
+                </div>
+                <div class="form-group">
+                    <label for="borrowBook">Book Title</label>
+                    <input type="text" id="borrowBook" required>
+                </div>
+                <div class="form-group">
+                    <label for="borrowAddress">Delivery Address</label>
+                    <textarea id="borrowAddress" rows="3" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeNewBorrowingModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+    <script src="js/data.js"></script>       <!-- BOOKS_DATA -->
+<script src="js/auth.js"></script>   
+    <!-- MEMBERS_DATA -->
+      <script src="js/admin-common.js"></script>
+<script src="js/admin-borrow.js"></script> <!-- Borrow management logic -->
+
+</body>
+</html>
+

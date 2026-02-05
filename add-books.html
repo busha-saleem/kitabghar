@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Books - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">کتاب گھر</a>
+            <div class="nav-right">
+                <button class="nav-btn" onclick="window.location.href='index.html'">HOME</button>
+                <button class="nav-btn admin-btn">
+                    <span class="icon">👤</span> Admin
+                </button>
+                <button class="nav-btn logout-btn" onclick="handleLogout()">
+                    <span class="icon">🚪</span> LOGOUT
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <button class="sidebar-item" onclick="loadPage('dashboard')">Dashboard</button>
+            <button class="sidebar-item active" onclick="loadPage('add-books')">Add Books</button>
+            <button class="sidebar-item" onclick="loadPage('borrow')">Borrow</button>
+            <button class="sidebar-item" onclick="loadPage('return')">Return</button>
+            <button class="sidebar-item" onclick="loadPage('members')">Members</button>
+            <button class="sidebar-item" onclick="loadPage('damaged-lost')">Damaged/Lost</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Add Books</h1>
+            </div>
+
+            <div class="form-container">
+                <form id="addBookForm" class="add-book-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookName">Name</label>
+                            <input type="text" id="bookName" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookCategory">Category</label>
+                            <input type="text" id="bookCategory" name="category" list="categories">
+                            <datalist id="categories">
+                                <!-- Categories will be populated by JavaScript -->
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookAuthor">Author</label>
+                            <input type="text" id="bookAuthor" name="author" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookYear">Year</label>
+                            <input type="number" id="bookYear" name="year" min="1000" max="2025">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group image-upload">
+                            <label for="bookPicture">Picture</label>
+                            <div class="image-upload-box" id="imageUploadBox">
+                                <span class="upload-icon">📋</span>
+                                <p>paste your image here</p>
+                                <input type="file" id="bookPicture" name="picture" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="form-group image-preview">
+                            <label>Preview</label>
+                            <div class="preview-box" id="previewBox">
+                                <p>No image selected</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookDescription">Description</label>
+                            <textarea id="bookDescription" name="description" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookPages">No. of Pages</label>
+                            <input type="number" id="bookPages" name="pages" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="totalCopies">Total Copies</label>
+                            <input type="number" id="totalCopies" name="total_copies" min="1" value="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">ADD</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/admin-common.js"></script>
+    <script src="js/admin-add-books.js"></script>
+</body>
+</html>
+
